@@ -1,6 +1,8 @@
 # Test Technique : Intégration PayDunya Checkout
 Ce projet est une application full-stack démontrant l'intégration de la solution de paiement PayDunya Checkout. Elle permet de simuler un parcours d'achat complet, de l'authentification à la redirection vers la plateforme de paiement sécurisée de PAYDUNYA.
 
+## Vidéo de démo
+Retrouver ci-joint une vidéo d'environ 2min présentant le travail et une capture du log de reception.
 
 ## Structure du Projet
 backend/ : API REST développée avec Spring Boot 3.4.1.

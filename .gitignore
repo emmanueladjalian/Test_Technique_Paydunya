@@ -1,0 +1,94 @@
+############################
+# GLOBAL
+############################
+
+# OS
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Env files
+.env*
+*.pem
+
+# VS Code (global)
+.vscode/
+
+############################
+# FRONTEND (Next.js)
+############################
+
+# Node dependencies
+frontend/node_modules/
+frontend/.pnp
+frontend/.pnp.*
+frontend/.yarn/*
+!frontend/.yarn/patches
+!frontend/.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/versions
+
+# Testing
+frontend/coverage/
+
+# Next.js build
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Vercel
+frontend/.vercel
+
+# TypeScript
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+############################
+# BACKEND (Java / Maven)
+############################
+
+# Maven
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# Autoriser target dans src (cas spécifiques)
+!backend/**/src/main/**/target/
+!backend/**/src/test/**/target/
+
+# Spring / application config
+backend/src/main/resources/application.properties
+
+############################
+# IDE – BACKEND
+############################
+
+# STS
+backend/.apt_generated
+backend/.classpath
+backend/.factorypath
+backend/.project
+backend/.settings
+backend/.springBeans
+backend/.sts4-cache
+
+# IntelliJ IDEA
+backend/.idea
+backend/*.iws
+backend/*.iml
+backend/*.ipr
+
+# NetBeans
+backend/nbproject/private/
+backend/nbbuild/
+backend/dist/
+backend/nbdist/
+backend/.nb-gradle/
+backend/build/
+
+# Autoriser build dans src
+!backend/**/src/main/**/build/
+!backend/**/src/test/**/build/

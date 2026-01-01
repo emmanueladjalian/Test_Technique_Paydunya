@@ -23,7 +23,7 @@ export default function Recapitulatif() {
             productName,
             productRef,
             price
-            // Pas besoin d'ajouter custom_data ici, c'est le backend qui s'en charge
+            // Pas besoin d'ajouter custom_data ici, c'est le backend qui s'en charge(dans le fichier backend/src/main/java/com/example/demo/service/PaymentService.java)
           }),
         }
       );
@@ -52,9 +52,10 @@ export default function Recapitulatif() {
           <button
             onClick={handlePayment}
             disabled={loading}
+            style={{cursor:'pointer'}}
             className="w-full mt-6 bg-blue-600 text-white py-3 rounded-xl font-bold"
           >
-            {loading ? "Traitement..." : "🔐💳Payer avec PayDunya"}
+            {loading ? "Traitement..." : "🔐Payer avec PayDunya💳"}
           </button>
         </div>
       </div>

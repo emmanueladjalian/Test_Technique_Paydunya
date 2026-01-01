@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Footer from '../components/Footer';
 
 const PRODUCTS = [
-  { id: 1, name: "Laptop Pro", price: 500000, reference: "LP-001", color: "bg-blue-100", icon: "💻" },
+  { id: 1, name: "Laptop Pro", price: 500, reference: "LP-001", color: "bg-blue-100", icon: "💻" },
   { id: 2, name: "Tablet Air", price: 250000, reference: "TA-002", color: "bg-purple-100", icon: "📱" },
   { id: 3, name: "Smart Watch", price: 125000, reference: "SW-003", color: "bg-emerald-100", icon: "⌚" },
   { id: 4, name: "Casque Audio", price: 75000, reference: "CA-004", color: "bg-orange-100", icon: "🎧" },

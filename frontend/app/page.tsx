@@ -21,7 +21,7 @@ export default function Login() {
         <form onSubmit={handleLogin} className="p-10 bg-white shadow-2xl rounded-3xl w-full max-w-md border border-slate-100">
           <div className="text-center mb-10">
             <h1 className="text-4xl font-black text-blue-700 tracking-tight">TechNova</h1>
-            <p className="text-slate-500 mt-2 font-medium">Accédez à votre espace client en entrant n’importe quel identifiant pour tester l’application.</p>
+            <p className="text-slate-500 mt-2 font-medium">Accédez à votre espace client en entrant n’importe quel identifiant fictif pour <b>tester l’application.</b></p>
           </div>
           
           <div className="space-y-5">
@@ -43,6 +43,7 @@ export default function Login() {
             />
             <button 
               type="submit" 
+              style={{cursor:'pointer'}}
               className="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all active:scale-95"
             >
               Se connecter

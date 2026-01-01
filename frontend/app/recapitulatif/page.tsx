@@ -1,54 +1,64 @@
 "use client";
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Footer from '../components/Footer';
 
 export default function Recapitulatif() {
   const [loading, setLoading] = useState(false);
 
+  const searchParams = useSearchParams();
+  const productName = searchParams.get('name')!;
+  const productRef = searchParams.get('ref')!;
+  const price = Number(searchParams.get('price')!);
+
   const handlePayment = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8080/api/payments/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          productName: "Laptop Pro",
-          productRef: "LP-PRO-2025", // Pour la contrainte custom-data
-          price: 500
-        }),
-      });
+      const response = await fetch(
+        'http://localhost:8080/api/payments/checkout',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            productName,
+            productRef,
+            price
+            // Pas besoin d'ajouter custom_data ici, c'est le backend qui s'en charge
+          }),
+        }
+      );
 
       const data = await response.json();
-      if (data.url) {
-        // Étape 4 : Redirection vers la page de paiement sécurisée
-        window.location.href = data.url;
-      } else {
-        alert("Erreur lors de l'initialisation du paiement");
-      }
-    } catch (error) {
-      console.error("Erreur:", error);
-      alert("Le backend est-il bien lancé sur le port 8080 ?");
+      if (data.url) window.location.href = data.url;
+    } catch {
+      alert("Erreur serveur");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-10 bg-white mt-10 shadow-xl rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 border-b pb-2">Récapitulatif de la commande</h2>
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <p className="text-lg font-medium">Laptop Pro</p>
-          <p className="text-sm text-gray-500 font-mono italic">Réf: LP-PRO-2025</p>
+    <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="grow flex items-center justify-center">
+        <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+          <h2 className="text-xl font-bold mb-4 text-slate-900">Récapitulatif</h2>
+
+          <p className="text-slate-900"><b>Produit :</b> {productName}</p>
+          <p className="text-slate-900"><b>Référence :</b> {productRef}</p>
+          <p className="text-blue-600 font-bold mt-2">
+            {price.toLocaleString()} XOF
+          </p>
+
+          <button
+            onClick={handlePayment}
+            disabled={loading}
+            className="w-full mt-6 bg-blue-600 text-white py-3 rounded-xl font-bold"
+          >
+            {loading ? "Traitement..." : "🔐💳Payer avec PayDunya"}
+          </button>
         </div>
-        <p className="text-xl font-bold">500 XOF</p>
       </div>
-      <button 
-        onClick={handlePayment}
-        disabled={loading}
-        className={`w-full py-4 text-white font-bold rounded-lg text-lg ${loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-800 transition-colors'}`}
-      >
-        {loading ? "Chargement..." : "Payer avec PayDunya"}
-      </button>
+      <Footer />
     </div>
   );
 }

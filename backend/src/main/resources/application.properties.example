@@ -1,6 +1,12 @@
 # Fichier d'exemple - Remplacez les valeurs par vos propres clés PayDunya
 spring.application.name=paydunya-checkout
 
+# Désactivation de la base de données (Comme on a pas besoin d'une base de données)
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, \
+                             org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, \
+                             org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+
+
 # Clés API PayDunya (Sandbox)
 paydunya.master-key=VOTRE_MASTER_KEY
 paydunya.private-key=VOTRE_PRIVATE_KEY
